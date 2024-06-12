@@ -2,6 +2,11 @@ import pytest
 import data
 import sender_stand_request
 
+def get_kit_body(name):
+    current_body = data.kit_body.copy()
+    current_body["name"] = name
+    return current_body
+
 def positive_assert(kit_body, auth_token):
     response = sender_stand_request.post_new_client_kit(kit_body, auth_token)
     assert response.status_code == 201
